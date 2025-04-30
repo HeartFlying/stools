@@ -13,6 +13,16 @@ this project record some smart tools for work
 |Debugfs|	低|	中|	低	|内核调试|
 |信号	|高	|低	|中	|简单事件通知|
 
+### ‌选择建议‌
+- 对于需要高性能、灵活性和安全性的场景，优先考虑使用Netlink或eBPF。
+- 如果涉及到设备驱动的控制和配置，可以考虑使用ioctl。
+- 对于简单的功能调用，系统调用是一个不错的选择。
+- 共享内存适用于大数据量的零拷贝传输。
+- Sysfs/Procfs适合用于查看系统的状态信息。
+- Debugfs主要用于内核调试。
+- 信号机制适用于简单的事件通知。
+
+
 ----
 
 # projects list
