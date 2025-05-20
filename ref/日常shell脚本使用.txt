@@ -1,0 +1,24 @@
+
+## ssh做动态端口映射
+ssh -D 13099 root@120.202.161.130 -p 13099
+
+## apt包管理
+
+1. 下载包到当前目录
++ apt -d download curl
++ apt-get 下载包目录"/var/cache/apt/archives"
+  - apt-get install --download-only curl
++ 利用wget
+  - wget http://security.ubuntu.com/ubuntu/pool/main/c/curl/curl_7.58.0-2ubuntu3.24_amd64.deb
+  - sudo dpkg -i curl_7.58.0-2ubuntu3.24_amd64.deb
+  - sudo apt install -f
+
+2. 下载递归依赖
+- 查找依赖  
+apt-rdepends curl
+- 脚本   
+apt download $(apt-rdepends curl | grep -v "^ ")
+- 脚本执行异常时做替换  
+apt-get download $(apt-rdepends curl | grep -v "^ " | sed 's/debconf-2.0/debconf/g')  
+apt download $(apt-rdepends curl | grep -v "^ " | sed 's/debconf-2.0/debconf/g')  
+
